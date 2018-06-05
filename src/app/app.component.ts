@@ -1,9 +1,12 @@
+import { Storage } from '@ionic/storage';
+import { HomePage } from './../pages/home/home';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { StocksPage } from '../pages/stocks/stocks';
+import StorageService from './shared/services/storage.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -11,15 +14,25 @@ import { StocksPage } from '../pages/stocks/stocks';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = StocksPage;
+  rootPage: any = HomePage;
+
+  isDBInitialized: boolean = false;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    private storageService: StorageService,
+    private storage: Storage,
+    public loadingCtrl: LoadingController
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
+      { title: 'Home', component: HomePage },
       { title: 'Stocks', component: StocksPage}
     ];
 
@@ -31,6 +44,24 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      let loading = this.loadingCtrl.create({
+        content: "Chargement..."
+      });
+    
+      loading.present();
+
+      // check if db is initialized in storage
+      this.storage.get('isDBInitialized').then(isDBInitialized => {
+        if (isDBInitialized) {
+          loading.dismiss()
+        } else {
+          // initialize MOCK data
+          this.storageService.resetStorageResources().then(() => {
+            loading.dismiss()
+          })
+        }
+      })
     });
   }
 
