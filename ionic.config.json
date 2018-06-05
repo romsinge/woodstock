@@ -1,0 +1,8 @@
+{
+  "name": "woodstock",
+  "app_id": "7bcd10f2",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
