@@ -9,8 +9,29 @@ export default class StorageService {
 
   constructor(private storage: Storage) {}
 
-  get(resource: string): Promise<any> {
-    return this.storage.get(resource);
+  get(resource: string, id?: string): Promise<any> {
+
+    let promise$;
+
+    if (id) {
+      promise$ = new Promise((resolve, reject) => {
+        this.storage.get(resource).then(data => {
+
+          // find object in resource table
+          let obj = data.find(it => it.id == id);
+
+          if (obj) {
+            resolve(obj);
+          } else {
+            reject("Not found");
+          }
+        })
+      })
+    } else {
+      promise$ = this.storage.get(resource);
+    }
+
+    return promise$;
   }
 
   post(resource: string, data: any): Promise<any> {

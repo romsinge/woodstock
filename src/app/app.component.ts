@@ -14,7 +14,7 @@ import StorageService from './shared/services/storage.service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = StocksPage;
 
   isDBInitialized: boolean = false;
 

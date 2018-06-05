@@ -11,12 +11,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
 import StorageService from './shared/services/storage.service';
+import ResourcePipe from './shared/pipes/resource.pipe';
 
 @NgModule({
   declarations: [
     MyApp,
     StocksPage,
-    HomePage
+    HomePage,
+    ResourcePipe
   ],
   imports: [
     BrowserModule,
