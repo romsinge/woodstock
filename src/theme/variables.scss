@@ -46,21 +46,24 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
+// makes the side of the split pane component fill the screen when it's large (iPad)
+$split-pane-ios-side-max-width: auto;
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
+// makes the side of the split pane component fill the screen when it's large (iPad)
+$split-pane-md-side-max-width: auto;
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
-
+// makes the side of the split pane component fill the screen when it's large (iPad)
+$split-pane-wp-side-max-width: auto;
 
 
 // App Theme
