@@ -5,5 +5,7 @@ export default class BuyingOrder extends Order {
 
   constructor(props) {
     super(props);
+
+    this.providerId = props.providerId;
   }
 }

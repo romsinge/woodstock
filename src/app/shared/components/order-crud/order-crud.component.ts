@@ -91,23 +91,23 @@ export default class OrderCrudComponent {
     // creates a new stock with the form group info
 
     let newOrder
+
+    switch(this.resource) {
+      case 'PurchaseOrders':
+        newOrder = new PurchaseOrder(this.order.value);
+      break;
+      case 'BuyingOrders':
+        newOrder = new BuyingOrder(this.order.value);
+      break;
+      default:
+      break;
+    }
     
     if (this.action == 'edit') {
       this.storageService.update(this.resource, this.params.get('id'), this.order.value).then(() => {
         this.viewCtrl.dismiss(true)
       })
     } else {
-      switch(this.resource) {
-        case 'PurchaseOrders':
-          newOrder = new PurchaseOrder(this.order.value);
-        break;
-        case 'BuyingOrders':
-          newOrder = new BuyingOrder(this.order.value);
-        break;
-        default:
-        break;
-      }
-    
       this.storageService.post(this.resource, newOrder).then(() => {
         this.viewCtrl.dismiss(true)
       })

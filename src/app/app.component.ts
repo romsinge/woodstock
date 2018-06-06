@@ -1,3 +1,4 @@
+import { PurchaseOrdersPage } from './../pages/purchase-orders/purchase-orders';
 import { ClientsPage } from './../pages/clients/clients';
 import { Storage } from '@ionic/storage';
 import { HomePage } from './../pages/home/home';
@@ -16,7 +17,7 @@ import { ProvidersPage } from '../pages/providers/providers';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ClientsPage;
+  rootPage: any = PurchaseOrdersPage;
 
   isDBInitialized: boolean = false;
 
@@ -37,7 +38,8 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Stocks', component: StocksPage},
       { title: 'Fournisseurs', component: ProvidersPage},
-      { title: 'Clients', component: ClientsPage}
+      { title: 'Clients', component: ClientsPage},
+      { title: 'Bons de commande', component: PurchaseOrdersPage}
     ];
 
   }

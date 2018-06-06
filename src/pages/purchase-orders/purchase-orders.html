@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Bons de commande</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let purchaseOrder of purchaseOrders$ | async">
+      <ion-item>
+        <h2>
+          {{ purchaseOrder.clientId | resource$:'Clients':'name' | async }} : {{ purchaseOrder.dateCreation | date:'longDate' }}
+        </h2>
+        <h3>
+          {{ purchaseOrder.quantity }}m<sup>3</sup> de {{ purchaseOrder.woodTypeId | resource$:'WoodTypes':'name' | async }}
+        </h3>
+        <p>Total : {{ purchaseOrder.priceTotal | currency:"EUR":true }} / {{ purchaseOrder.weightTotal }}kg</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button (click)="handleEditClick(purchaseOrder.id)" ion-button color="primary">
+          <ion-icon name="create"></ion-icon>
+          Modifier
+        </button>
+        <button (click)="handleDeleteClick(purchaseOrder.id)" ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Supprimer
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)="handleAddButtonClick()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

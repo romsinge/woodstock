@@ -102,6 +102,15 @@ export default class StorageService {
             resolve(newData);
           })
         break;
+        case "PurchaseOrders":
+        case "BuyingOrders":
+          this.get("WoodTypes", data.woodTypeId).then(woodType => {
+            newData.dateCreation = new Date();
+            newData.priceTotal = woodType.price * newData.quantity;
+            newData.weightTotal = woodType.weight * newData.quantity;
+            resolve(newData);
+          })
+        break;
         default:
           resolve(newData);
         break;

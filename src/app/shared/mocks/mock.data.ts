@@ -43,6 +43,26 @@ const RESOURCES = {
       email: "michu@orange.fr",
       address: "12 rue de l'avoine, 13001 Marseille"
     }
+  ],
+  "PurchaseOrders": [
+    {
+      dateCreation: new Date(),
+      quantity: 2,
+      priceTotal: 167,
+      weightTotal: 684,
+      woodTypeId: "1",
+      clientId: "0"
+    }
+  ],
+  "BuyingOrders": [
+    {
+      dateCreation: new Date(),
+      quantity: 2,
+      priceTotal: 167,
+      weightTotal: 684,
+      woodTypeId: "1",
+      providerId: "0"
+    }
   ]
 }
 
