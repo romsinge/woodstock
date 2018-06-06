@@ -3,6 +3,7 @@ import { NavParams, ViewController, AlertController } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import WoodType from '../../classes/WoodType';
 import StorageService from '../../services/storage.service';
+import Stock from '../../classes/stock';
 
 @Component({
   templateUrl: './stock-crud.component.html'
@@ -13,6 +14,7 @@ export default class StockCrudComponent {
   action: string;
   stock: FormGroup
   woodTypes$: Promise<WoodType[]>
+  selectedWoodType: string
 
   constructor(
     params: NavParams, 
@@ -32,12 +34,6 @@ export default class StockCrudComponent {
       quantity: new FormControl(0, Validators.required),
       woodTypeId: new FormControl(null, Validators.required)
     })
-
-    this.getWoodTypes()
-  }
-
-  getWoodTypes(): void {
-    this.woodTypes$ = this.storageService.get('WoodTypes')
   }
 
   handleAddTypeClick(): void {
@@ -74,8 +70,11 @@ export default class StockCrudComponent {
             if (data && data.name && data.price && data.weight) {
               // could be better
               // if data is valid, create new woodType
-              this.storageService.post('WoodTypes', data).then(() => {
-                this.getWoodTypes()
+              this.storageService.post('WoodTypes', data).then(woodType => {
+                this.selectedWoodType = woodType.name
+                this.stock.patchValue({
+                  woodTypeId: woodType.id
+                })
               })
             } else {
               // invalid login
@@ -86,6 +85,16 @@ export default class StockCrudComponent {
       ]
     });
     alert.present();
+  }
+
+  handleSubmit(): void {
+    // creates a new stock with the form group info
+
+    let newStock = new Stock(this.stock.value);
+    
+    this.storageService.post('Stocks', newStock).then(() => {
+      this.viewCtrl.dismiss(true)
+    })
   }
 
   cancel(): void {

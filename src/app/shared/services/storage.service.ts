@@ -42,14 +42,40 @@ export default class StorageService {
     return new Promise((resolve, reject) => {
       this.storage.get(resource).then(previousData => {
 
-        let newData = previousData.concat([{
-          // generate uuid for the resource
-          id: uuid(),
-          ...data
-        }])
+        this.calculateProperties(resource, data).then(calcData => {
+          
+          calcData = {
+            // generate uuid for the resource
+            id: uuid(),
+            ...calcData
+          }
 
-        this.storage.set(resource, newData).then(() => resolve());
+          let newData = previousData.concat([calcData])
+
+          this.storage.set(resource, newData).then(() => resolve(calcData));
+        })
       })
+    })
+  }
+
+  calculateProperties(resource: string, data: any): Promise<any> {
+    // calculates properties from others
+
+    let newData = data
+    
+    return new Promise((resolve, reject) => {
+      switch (resource) {
+        case "Stocks":
+          this.get("WoodTypes", data.woodTypeId).then(woodType => {
+            newData.priceTotal = woodType.price * newData.quantity;
+            newData.weightTotal = woodType.weight * newData.quantity;
+            resolve(newData);
+          })
+        break;
+        default:
+          resolve(newData);
+        break;
+      }
     })
   }
 
