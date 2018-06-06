@@ -16,7 +16,7 @@
         <p>{{ provider.address }}</p>
       </ion-item>
       <ion-item-options side="right">
-        <button (click)="handleEditClick()" ion-button color="primary">
+        <button (click)="handleEditClick(provider.id)" ion-button color="primary">
           <ion-icon name="create"></ion-icon>
           Modifier
         </button>

@@ -20,7 +20,6 @@ export default class StorageService {
           if (data) {
             // finds object in resource table
             let obj = data.find(it => it.id == id);
-
             if (obj) {
               resolve(obj);
             } else {
@@ -58,7 +57,21 @@ export default class StorageService {
     });
   }
 
-  delete(resource: string, id: string) {
+  update(resource: string, id: string, newValue: any): Promise<any> {
+    // finds and replaces the chosen instance in resource
+
+    return new Promise((resolve, reject) => {
+      this.get(resource).then(previousData => {
+        let newData = previousData.map(entity => {
+          return entity.id == id ? newValue : entity;
+        });
+  
+        this.storage.set(resource, newData).then(() => resolve());
+      })
+    })
+  }
+
+  delete(resource: string, id: string): Promise<any> {
     // delete one instance of a resource
     // it is basically a post on the resource 
     // with the same values except for the chosen one

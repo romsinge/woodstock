@@ -37,8 +37,24 @@ export class ProvidersPage {
     this.providers$.then(() => loading.dismiss())
   }
 
+  handleEditClick(id: string): void {
+    // edits the chosen line
+
+    // creates a modal to add a new type of wood
+    let crudModal = this.modalCtrl.create(ProviderCrudComponent, { action: 'edit', id });
+
+    crudModal.present();
+
+    crudModal.onDidDismiss(isDone => {
+      if (isDone) {
+        // resource was added or modified, reload
+        this.getProviders()
+      }
+    });
+  }
+
   handleDeleteClick(id: string): void {
-    // delete the chosen line
+    // deletes the chosen line
 
     this.storageService.delete('Providers', id).then(() => {
       this.getProviders();
@@ -46,7 +62,7 @@ export class ProvidersPage {
   }
 
   handleAddButtonClick() {
-    // create a modal to add a new type of wood
+    // creates a modal to add a new type of wood
     let crudModal = this.modalCtrl.create(ProviderCrudComponent, { action: 'add' });
 
     crudModal.present();
