@@ -4,10 +4,8 @@ export default class Stock {
   priceTotal?: number;
   weightTotal?: number;
 
-  constructor(params) {
-    this.quantity = params.quantity
-    this.woodTypeId = params.woodTypeId
-
-    console.log(this.quantity)
+  constructor(props) {
+    this.quantity = props.quantity
+    this.woodTypeId = props.woodTypeId
   }
 }

@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { StocksPage } from '../pages/stocks/stocks';
 import StorageService from './shared/services/storage.service';
+import { ProvidersPage } from '../pages/providers/providers';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,7 @@ import StorageService from './shared/services/storage.service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = StocksPage;
+  rootPage: any = ProvidersPage;
 
   isDBInitialized: boolean = false;
 
@@ -33,7 +34,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Stocks', component: StocksPage}
+      { title: 'Stocks', component: StocksPage},
+      { title: 'Fournisseurs', component: ProvidersPage}
     ];
 
   }

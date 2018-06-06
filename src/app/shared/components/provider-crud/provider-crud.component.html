@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="cancel()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{ actionName }} un fournisseur</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="provider" (submit)="handleSubmit()">
+    
+
+    <button ion-button type="submit" [disabled]="provider && provider.invalid" >
+      Créer fournisseur
+    </button>
+  </form>
+</ion-content>
