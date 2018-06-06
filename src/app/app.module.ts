@@ -18,6 +18,7 @@ import StockCrudComponent from './shared/components/stock-crud/stock-crud.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import ProviderCrudComponent from './shared/components/provider-crud/provider-crud.component';
 import ClientCrudComponent from './shared/components/client-crud/client-crud.component';
+import OrderCrudComponent from './shared/components/order-crud/order-crud.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import ClientCrudComponent from './shared/components/client-crud/client-crud.com
     ProvidersPage,
     ProviderCrudComponent,
     ClientsPage,
-    ClientCrudComponent
+    ClientCrudComponent,
+    OrderCrudComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import ClientCrudComponent from './shared/components/client-crud/client-crud.com
     ProvidersPage,
     ProviderCrudComponent,
     ClientsPage,
-    ClientCrudComponent
+    ClientCrudComponent,
+    OrderCrudComponent
   ],
   providers: [
     StatusBar,
