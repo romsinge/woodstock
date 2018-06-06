@@ -53,7 +53,24 @@ export default class StorageService {
           let newData = previousData.concat([calcData])
 
           this.storage.set(resource, newData).then(() => resolve(calcData));
-        })
+        });
+      });
+    });
+  }
+
+  delete(resource: string, id: string) {
+    // delete one instance of a resource
+    // it is basically a post on the resource 
+    // with the same values except for the chosen one
+
+    return new Promise((resolve, reject) => {
+      this.storage.get(resource).then(previousData => {
+
+          let newData = previousData.map(cell => {
+            return cell.id != id;
+          });
+
+          this.storage.set(resource, newData).then(() => resolve());
       })
     })
   }

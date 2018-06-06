@@ -37,6 +37,14 @@ export class ProvidersPage {
     this.providers$.then(() => loading.dismiss())
   }
 
+  handleDeleteClick(id: string): void {
+    // delete the chosen line
+
+    this.storageService.delete('Providers', id).then(() => {
+      this.getProviders();
+    });
+  }
+
   handleAddButtonClick() {
     // create a modal to add a new type of wood
     let crudModal = this.modalCtrl.create(ProviderCrudComponent, { action: 'add' });

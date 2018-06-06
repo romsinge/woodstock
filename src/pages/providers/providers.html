@@ -15,14 +15,14 @@
         <h3>{{ provider.email }}</h3>
         <p>{{ provider.address }}</p>
       </ion-item>
-      <ion-item-options side="left">
-        <button ion-button color="primary">
-          <ion-icon name="text"></ion-icon>
-          Text
+      <ion-item-options side="right">
+        <button (click)="handleEditClick()" ion-button color="primary">
+          <ion-icon name="create"></ion-icon>
+          Modifier
         </button>
-        <button ion-button color="secondary">
-          <ion-icon name="call"></ion-icon>
-          Call
+        <button (click)="handleDeleteClick(provider.id)" ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Supprimer
         </button>
       </ion-item-options>
     </ion-item-sliding>
