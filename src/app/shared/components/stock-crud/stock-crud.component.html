@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons start>
-      <button ion-button icon-only color="royal" (click)="cancel()">
+      <button ion-button icon-only (click)="cancel()">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
@@ -10,5 +10,17 @@
 </ion-header>
 
 <ion-content>
-  
+  <form [formGroup]="stock">
+    <ion-list>
+      <ion-item>
+        <ion-label>Type de bois</ion-label>
+        <ion-select formControlName="woodTypeId">
+          <ion-option *ngFor="let woodType of woodTypes$ | async" [value]="woodType.id">{{ woodType.name }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <button ion-button (click)="handleAddTypeClick()">
+        Ajouter type de bois
+      </button>
+    </ion-list>
+  </form>
 </ion-content>

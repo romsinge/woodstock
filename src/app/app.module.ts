@@ -13,6 +13,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import StorageService from './shared/services/storage.service';
 import ResourcePipe from './shared/pipes/resource.pipe';
 import StockCrudComponent from './shared/components/stock-crud/stock-crud.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import StockCrudComponent from './shared/components/stock-crud/stock-crud.compon
     IonicStorageModule.forRoot({
       name: '__mydb',
       driverOrder: ['localstorage', 'sqlite', 'websql', 'indexeddb']
-    })
+    }),
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

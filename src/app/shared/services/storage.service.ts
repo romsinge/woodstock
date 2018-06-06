@@ -17,13 +17,15 @@ export default class StorageService {
       promise$ = new Promise((resolve, reject) => {
         this.storage.get(resource).then(data => {
 
-          // find object in resource table
-          let obj = data.find(it => it.id == id);
+          if (data) {
+            // finds object in resource table
+            let obj = data.find(it => it.id == id);
 
-          if (obj) {
-            resolve(obj);
-          } else {
-            reject("Not found");
+            if (obj) {
+              resolve(obj);
+            } else {
+              reject("Not found");
+            }
           }
         })
       })
@@ -35,15 +37,18 @@ export default class StorageService {
   }
 
   post(resource: string, data: any): Promise<any> {
-    // store the resource and adds metadata
+    // stores the resource and adds metadata
 
     return new Promise((resolve, reject) => {
       this.storage.get(resource).then(previousData => {
-        this.storage.set(resource, previousData.push({
+
+        let newData = previousData.concat([{
           // generate uuid for the resource
           id: uuid(),
           ...data
-        })).then(() => resolve());
+        }])
+
+        this.storage.set(resource, newData).then(() => resolve());
       })
     })
   }
