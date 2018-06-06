@@ -1,3 +1,4 @@
+import { BuyingOrdersPage } from './../pages/buying-orders/buying-orders';
 import { PurchaseOrdersPage } from './../pages/purchase-orders/purchase-orders';
 import { ClientsPage } from './../pages/clients/clients';
 import { ProvidersPage } from './../pages/providers/providers';
@@ -33,7 +34,8 @@ import OrderCrudComponent from './shared/components/order-crud/order-crud.compon
     ClientsPage,
     ClientCrudComponent,
     OrderCrudComponent,
-    PurchaseOrdersPage
+    PurchaseOrdersPage,
+    BuyingOrdersPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ import OrderCrudComponent from './shared/components/order-crud/order-crud.compon
     ClientsPage,
     ClientCrudComponent,
     OrderCrudComponent,
-    PurchaseOrdersPage
+    PurchaseOrdersPage,
+    BuyingOrdersPage
   ],
   providers: [
     StatusBar,
