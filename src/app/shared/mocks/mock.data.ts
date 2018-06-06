@@ -27,6 +27,14 @@ const RESOURCES = {
       priceTotal: 300,
       weightTotal: 60
     }
+  ],
+  "Providers": [
+    {
+      id: "0",
+      name: "SIMC",
+      email: "simc@simc.fr",
+      address: "14 rue bertrand, 13002 Marseille"
+    }
   ]
 }
 

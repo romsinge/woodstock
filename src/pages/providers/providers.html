@@ -8,9 +8,27 @@
 </ion-header>
 
 <ion-content>
-  
+  <ion-list>
+    <ion-item-sliding *ngFor="let provider of providers$ | async">
+      <ion-item>
+        <h2>{{ provider.name }}</h2>
+        <h3>{{ provider.email }}</h3>
+        <p>{{ provider.address }}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="text"></ion-icon>
+          Text
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="call"></ion-icon>
+          Call
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
   <ion-fab right bottom>
-    <button ion-fab color="red" (click)="handleAddButtonClick()"><ion-icon name="add"></ion-icon></button>
+    <button ion-fab color="danger" (click)="handleAddButtonClick()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 </ion-content>
