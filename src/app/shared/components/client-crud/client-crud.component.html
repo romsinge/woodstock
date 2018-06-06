@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="cancel()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{ actionName }} un client</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="client" (submit)="handleSubmit()">
+    
+    <ion-item>
+      <ion-label floating>Nom</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="client && client.controls && client.controls.name.touched && client.controls.name.hasError('required')">
+      <ion-label color="danger">
+        Ce champ est requis
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="client && client.controls && client.controls.email.touched && client.controls.email.hasError('required')">
+      <ion-label color="danger">
+        Ce champ est requis
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="client && client.controls && client.controls.email.touched && client.controls.email.hasError('email')">
+      <ion-label color="danger">
+        L'adresse email doit être valide
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Adresse</ion-label>
+      <ion-input formControlName="address" type="text"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="client && client.controls && client.controls.address.touched && client.controls.address.hasError('required')">
+      <ion-label color="danger">
+        Ce champ est requis
+      </ion-label>
+    </ion-item>
+
+    <button ion-button type="submit" [disabled]="client && client.invalid" >
+      {{ actionName }} client
+    </button>
+  </form>
+</ion-content>

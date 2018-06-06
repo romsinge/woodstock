@@ -35,6 +35,14 @@ const RESOURCES = {
       email: "simc@simc.fr",
       address: "14 rue bertrand, 13002 Marseille"
     }
+  ],
+  "Clients": [
+    {
+      id: "0",
+      name: "Mme Michu",
+      email: "michu@orange.fr",
+      address: "12 rue de l'avoine, 13001 Marseille"
+    }
   ]
 }
 

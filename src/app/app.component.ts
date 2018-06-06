@@ -1,3 +1,4 @@
+import { ClientsPage } from './../pages/clients/clients';
 import { Storage } from '@ionic/storage';
 import { HomePage } from './../pages/home/home';
 import { Component, ViewChild } from '@angular/core';
@@ -15,7 +16,7 @@ import { ProvidersPage } from '../pages/providers/providers';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ProvidersPage;
+  rootPage: any = ClientsPage;
 
   isDBInitialized: boolean = false;
 
@@ -35,7 +36,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Stocks', component: StocksPage},
-      { title: 'Fournisseurs', component: ProvidersPage}
+      { title: 'Fournisseurs', component: ProvidersPage},
+      { title: 'Clients', component: ClientsPage}
     ];
 
   }

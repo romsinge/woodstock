@@ -1,3 +1,4 @@
+import { ClientsPage } from './../pages/clients/clients';
 import { ProvidersPage } from './../pages/providers/providers';
 import { HomePage } from './../pages/home/home';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,7 @@ import ResourcePipe from './shared/pipes/resource.pipe';
 import StockCrudComponent from './shared/components/stock-crud/stock-crud.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import ProviderCrudComponent from './shared/components/provider-crud/provider-crud.component';
+import ClientCrudComponent from './shared/components/client-crud/client-crud.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import ProviderCrudComponent from './shared/components/provider-crud/provider-cr
     ResourcePipe,
     StockCrudComponent,
     ProvidersPage,
-    ProviderCrudComponent
+    ProviderCrudComponent,
+    ClientsPage,
+    ClientCrudComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,9 @@ import ProviderCrudComponent from './shared/components/provider-crud/provider-cr
     HomePage,
     StockCrudComponent,
     ProvidersPage,
-    ProviderCrudComponent
+    ProviderCrudComponent,
+    ClientsPage,
+    ClientCrudComponent
   ],
   providers: [
     StatusBar,
