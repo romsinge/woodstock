@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, ModalController } from 'ionic-angular';
 import Stock from '../../app/shared/classes/stock';
 import StorageService from '../../app/shared/services/storage.service';
+import StockCrudComponent from '../../app/shared/components/stock-crud/stock-crud.component';
 
 @Component({
   selector: 'page-stocks',
@@ -14,10 +15,15 @@ export class StocksPage {
   constructor(
     public navCtrl: NavController,
     private storageService: StorageService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
+    this.getStocks()
+  }
+
+  getStocks() {
     // loading before data arrives
     let loading = this.loadingCtrl.create({
       content: "Chargement..."
@@ -29,5 +35,19 @@ export class StocksPage {
     this.stocks$ = this.storageService.get('Stocks')
 
     this.stocks$.then(() => loading.dismiss())
+  }
+
+  handleAddButtonClick() {
+    // create a modal to add a new type of wood
+    let crudModal = this.modalCtrl.create(StockCrudComponent, { action: 'add' });
+
+    crudModal.present();
+
+    crudModal.onDidDismiss(isDone => {
+      if (isDone) {
+        // resource was added or modified, reload
+        this.getStocks()
+      }
+    });
   }
 }

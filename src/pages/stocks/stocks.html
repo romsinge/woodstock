@@ -15,4 +15,8 @@
       <p>{{ stock.priceTotal | currency:"EUR":true }} / {{ stock.weightTotal }}kg</p>
     </ion-item>
   </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="red" (click)="handleAddButtonClick()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>

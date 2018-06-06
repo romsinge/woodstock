@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import StorageService from '../services/storage.service';
-import { resolveDefinition } from '@angular/core/src/view/util';
 
 @Pipe({
   name: 'resource$'

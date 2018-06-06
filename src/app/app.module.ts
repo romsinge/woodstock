@@ -12,13 +12,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import StorageService from './shared/services/storage.service';
 import ResourcePipe from './shared/pipes/resource.pipe';
+import StockCrudComponent from './shared/components/stock-crud/stock-crud.component';
 
 @NgModule({
   declarations: [
     MyApp,
     StocksPage,
     HomePage,
-    ResourcePipe
+    ResourcePipe,
+    StockCrudComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import ResourcePipe from './shared/pipes/resource.pipe';
   entryComponents: [
     MyApp,
     StocksPage,
-    HomePage
+    HomePage,
+    StockCrudComponent
   ],
   providers: [
     StatusBar,
