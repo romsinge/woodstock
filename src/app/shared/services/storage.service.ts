@@ -66,7 +66,7 @@ export default class StorageService {
     return new Promise((resolve, reject) => {
       this.storage.get(resource).then(previousData => {
 
-          let newData = previousData.map(cell => {
+          let newData = previousData.filter(cell => {
             return cell.id != id;
           });
 

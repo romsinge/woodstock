@@ -28,8 +28,10 @@ export default class ProviderCrudComponent {
   ngOnInit() {
     // generates abstract form to link with the template
     this.provider = new FormGroup({
-      // todo
-    })
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      address: new FormControl('', Validators.required),
+    });
   }
 
   handleSubmit(): void {

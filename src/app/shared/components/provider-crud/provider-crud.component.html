@@ -12,6 +12,40 @@
 <ion-content>
   <form [formGroup]="provider" (submit)="handleSubmit()">
     
+    <ion-item>
+      <ion-label floating>Nom</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="provider && provider.controls && provider.controls.name.touched && provider.controls.name.hasError('required')">
+      <ion-label color="danger">
+        Ce champ est requis
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="provider && provider.controls && provider.controls.email.touched && provider.controls.email.hasError('required')">
+      <ion-label color="danger">
+        Ce champ est requis
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="provider && provider.controls && provider.controls.email.touched && provider.controls.email.hasError('email')">
+      <ion-label color="danger">
+        L'adresse email doit être valide
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Adresse</ion-label>
+      <ion-input formControlName="address" type="text"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="provider && provider.controls && provider.controls.address.touched && provider.controls.address.hasError('required')">
+      <ion-label color="danger">
+        Ce champ est requis
+      </ion-label>
+    </ion-item>
 
     <button ion-button type="submit" [disabled]="provider && provider.invalid" >
       Créer fournisseur
