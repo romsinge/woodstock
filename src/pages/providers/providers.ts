@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, ModalController } from 'ionic-angular';
-import Stock from '../../app/shared/classes/stock';
 import StorageService from '../../app/shared/services/storage.service';
 import ProviderCrudComponent from '../../app/shared/components/provider-crud/provider-crud.component';
 import Provider from '../../app/shared/classes/provider';

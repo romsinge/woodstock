@@ -18,7 +18,7 @@ import { ProvidersPage } from '../pages/providers/providers';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = BuyingOrdersPage;
+  rootPage: any = HomePage;
 
   isDBInitialized: boolean = false;
 
@@ -36,7 +36,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'Woodstock', component: HomePage },
       { title: 'Stocks', component: StocksPage},
       { title: 'Fournisseurs', component: ProvidersPage},
       { title: 'Clients', component: ClientsPage},

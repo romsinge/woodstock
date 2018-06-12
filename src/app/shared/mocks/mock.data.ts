@@ -56,6 +56,7 @@ const RESOURCES = {
   ],
   "BuyingOrders": [
     {
+      id: "0",
       dateCreation: new Date(),
       quantity: 2,
       priceTotal: 167,
