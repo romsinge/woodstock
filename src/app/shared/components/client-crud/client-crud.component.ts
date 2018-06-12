@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
+import { NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import StorageService from '../../services/storage.service';
 import Client from '../../classes/client';
@@ -17,7 +17,6 @@ export default class ClientCrudComponent {
     private params: NavParams, 
     public viewCtrl: ViewController,
     private storageService: StorageService,
-    private alertCtrl: AlertController,
     private loadingCtrl: LoadingController
   ) {
 
