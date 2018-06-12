@@ -3,6 +3,7 @@ import { NavController, LoadingController, ModalController } from 'ionic-angular
 import Stock from '../../app/shared/classes/stock';
 import StorageService from '../../app/shared/services/storage.service';
 import ProviderCrudComponent from '../../app/shared/components/provider-crud/provider-crud.component';
+import Provider from '../../app/shared/classes/provider';
 
 @Component({
   selector: 'page-providers',
@@ -10,7 +11,7 @@ import ProviderCrudComponent from '../../app/shared/components/provider-crud/pro
 })
 export class ProvidersPage {
 
-  providers$: Promise<Stock[]>
+  providers$: Promise<Provider[]>
 
   constructor(
     public navCtrl: NavController,
@@ -20,10 +21,6 @@ export class ProvidersPage {
   ) {}
 
   ngOnInit() {
-    this.getProviders()
-  }
-
-  getProviders() {
     // loading before data arrives
     let loading = this.loadingCtrl.create({
       content: "Chargement..."
@@ -31,10 +28,15 @@ export class ProvidersPage {
   
     loading.present();
 
-    // get the stocks then show them in template with AsyncPipe
-    this.providers$ = this.storageService.get('Providers')
+    this.getProviders().then(() => loading.dismiss())
+  }
 
-    this.providers$.then(() => loading.dismiss())
+  getProviders(): Promise<Provider[]> {
+    
+    // get the stocks then show them in template with AsyncPipe
+    this.providers$ = this.storageService.get('Providers');
+
+    return this.providers$;
   }
 
   handleEditClick(id: string): void {
@@ -53,12 +55,16 @@ export class ProvidersPage {
     });
   }
 
-  handleDeleteClick(id: string): void {
+  handleDeleteClick(id: string): Promise<any> {
     // deletes the chosen line
 
-    this.storageService.delete('Providers', id).then(() => {
+    let promise$ = this.storageService.delete('Providers', id);
+
+    promise$.then(() => {
       this.getProviders();
     });
+
+    return promise$;
   }
 
   handleAddButtonClick() {

@@ -83,7 +83,7 @@ export default class StorageService {
             return cell.id != id;
           });
 
-          this.storage.set(resource, newData).then(() => resolve());
+          this.storage.set(resource, newData).then(() => resolve(`${resource} with id ${id} was deleted`));
       })
     })
   }

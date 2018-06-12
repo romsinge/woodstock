@@ -3,7 +3,7 @@ import { NavParams, ViewController, AlertController, LoadingController } from 'i
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import StorageService from '../../services/storage.service';
 import Order from '../../classes/order';
-import WoodType from '../../classes/WoodType';
+import WoodType from '../../classes/woodType';
 import PurchaseOrder from '../../classes/purchaseOrder';
 import BuyingOrder from '../../classes/buyingOrder';
 

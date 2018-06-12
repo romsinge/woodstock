@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController, AlertController } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import WoodType from '../../classes/WoodType';
+import WoodType from '../../classes/woodType';
 import StorageService from '../../services/storage.service';
 import Stock from '../../classes/stock';
 
