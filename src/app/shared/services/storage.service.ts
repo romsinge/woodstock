@@ -23,7 +23,7 @@ export default class StorageService {
             if (obj) {
               resolve(obj);
             } else {
-              reject("Not found");
+              resolve({});
             }
           }
         })
