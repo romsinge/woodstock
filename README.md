@@ -15,7 +15,7 @@ Install the dependencies
 
 Install the Ionic Framework CLI
 
-`npm install -g ionic`
+`npm install -g ionic cordova`
 
 ## Development
 Launch Ionic server
